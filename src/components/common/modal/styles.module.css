@@ -6,16 +6,15 @@
   height: fit-content !important;
   background-color: #fff;
   border-radius: var(--border-radius-m);
-
+  overflow: hidden;
   & > div {
     padding: 20px;
   }
 }
 
-
-.close_button{
-    min-width: 20px !important;
+.close_button {
+  min-width: 20px !important;
 }
-.cancel_button{
-    color: var(--text-secondary-color) !important;
+.cancel_button {
+  color: var(--text-secondary-color) !important;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.module.css';
-import { CircularProgress, Divider, Modal, Typography } from '@mui/material';
+import cx from 'classnames';
+import { Divider, Modal, Typography } from '@mui/material';
 import Flex from '../flex';
 import CustomButton from '../button';
 import { IoMdClose } from 'react-icons/io';
@@ -19,6 +20,11 @@ interface Props {
   allowClose?: boolean;
   width?: number;
   loading?: boolean;
+  className?: string;
+  rootClassName?: string;
+  headerClassName?: string;
+  bodyClassName?: string;
+  footerClassName?: string;
 }
 const CustomModal = ({
   width = 440,
@@ -29,11 +35,11 @@ const CustomModal = ({
   ...props
 }: Props) => {
   return (
-    <Modal open={props.open}>
+    <Modal open={props.open} className={props.rootClassName}>
       <Flex isFullHeight justify="center" className={styles.container}>
         <Loader active={loading}>
-          <div className={styles.content} style={{ width }}>
-            <Flex justify="space-between" align="center">
+          <div className={cx(styles.content, props.className)} style={{ width }}>
+            <Flex justify="space-between" align="center" className={props.headerClassName}>
               <Typography>{props.title}</Typography>
               {allowClose && (
                 <CustomButton variant="text" className={styles.close_button} onClick={props.onClose}>
@@ -42,11 +48,11 @@ const CustomModal = ({
               )}
             </Flex>
             <Divider />
-            <div>{props.children}</div>
+            <div className={props.bodyClassName}>{props.children}</div>
             {props.footer === false
               ? null
               : props.footer || (
-                  <Flex justify="flex-end" gap="l">
+                  <Flex justify="flex-end" gap="l" className={props.footerClassName}>
                     {allowClose && (
                       <CustomButton variant="text" type="reset" form={props.form} className={styles.cancel_button} onClick={props.onClose}>
                         {cancelButtonText}
