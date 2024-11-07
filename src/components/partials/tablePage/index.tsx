@@ -1,11 +1,13 @@
 import React, { ChangeEvent } from 'react';
 import styles from './styles.module.css';
-import { Divider, Paper, Table as MUTable, TextField, TableHead, TableBody } from '@mui/material';
+import { Divider, Paper, TextField } from '@mui/material';
 import { Flex } from '@/components/common';
 import Empty from '@/components/common/empty';
+import CustomTable from '@/components/common/table';
+import { GridColDef } from '@mui/x-data-grid';
 
 interface Props {
-  columns: { [key: string]: any }[];
+  columns: GridColDef[];
   data: { [key: string]: any }[];
   hasData: boolean;
   searchPlaceHolder: string;
@@ -19,14 +21,12 @@ const TablePage = (props: Partial<Props>) => {
     <Paper variant="outlined" elevation={3} className={styles.container}>
       <Header {...props} />
       <Divider />
-      {!props.data?.length ? <Empty className={styles.empty}/> : <Table {...props} />}
-      <Table {...props} />
+      {!props.data?.length ? <Empty className={styles.empty} /> : <Table {...props} />}
     </Paper>
   );
 };
 
 export default TablePage;
-
 
 const Header = ({ searchPlaceHolder = 'Search...', ...props }: Partial<Props>) => {
   // Functions
@@ -40,12 +40,14 @@ const Header = ({ searchPlaceHolder = 'Search...', ...props }: Partial<Props>) =
   );
 };
 
+const Table = ({ data = [], columns = [] }: Partial<Props>) => {
+  // Memos
+  const dataMemo = React.useMemo(() => data.map((item, index) => ({ ...item, index: index + 1 })), [data]); // prettier-ignore
+  const columnsMemo = React.useMemo(() => {
+    const newColumns = [...columns];
+    newColumns.unshift({ field: 'index', headerName: '#', headerAlign: 'center', align: 'center', width: 10 });
+    return newColumns;
+  }, [columns]);
 
-const Table = ({ data = [], columns = [], ...props }: Partial<Props>) => {
-  return (
-    <MUTable>
-      <TableHead></TableHead>
-      <TableBody></TableBody>
-    </MUTable>
-  );
+  return <CustomTable data={dataMemo} columns={columnsMemo} disableColumnFilter disableColumnMenu disableColumnSorting hideFooterPagination />;
 };

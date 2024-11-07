@@ -6,6 +6,7 @@ import { TextField, Typography } from '@mui/material';
 
 interface Props {
   open: boolean;
+  loading?: boolean;
   onClose: () => void;
   onSubmit: (data: any) => void;
 }
@@ -29,11 +30,18 @@ const CustomerModal = (props: Props) => {
   React.useEffect(() => { !props.open && reset(defaultValues) }, [props.open]); // prettier-ignore
 
   return (
-    <CustomModal open={props.open} title={'Create Customer'} onClose={props.onClose} width={600} form={formId} confirmButtonText="Create">
+    <CustomModal
+      width={600}
+      form={formId}
+      open={props.open}
+      title={'Create Customer'}
+      loading={props.loading}
+      onClose={props.onClose}
+      confirmButtonText="Create">
       <form id={formId} onSubmit={handleSubmit(props.onSubmit)}>
         <Flex gap={'xl'} direction="column">
           {items.map((item) => (
-            <Block title="ID Card Information">
+            <Block title={item.title}>
               {item.children.map((child) => (
                 <FormItem
                   key={child.name}
@@ -62,7 +70,7 @@ export default CustomerModal;
 
 const Block = (props: { title: string; children: React.ReactNode }) => {
   return (
-    <Flex gap={'xl'} direction="column">
+    <Flex gap={'m'} direction="column">
       <Typography>{props.title}</Typography>
       <Flex wrap gap={'l'}>
         {props.children}
@@ -71,7 +79,6 @@ const Block = (props: { title: string; children: React.ReactNode }) => {
   );
 };
 
-
 const formId = 'customer-form';
 
 const items: ItemType[] = [
@@ -79,7 +86,7 @@ const items: ItemType[] = [
     title: 'ID Card Information',
     children: [
       {
-        name: 'name',
+        name: 'firstName',
         label: 'First Name',
         component: 'input',
       },
@@ -131,7 +138,7 @@ const items: ItemType[] = [
     title: 'Contact',
     children: [
       {
-        name: 'phoneNumber',
+        name: 'phone',
         label: 'Phone number',
         component: 'input',
       },

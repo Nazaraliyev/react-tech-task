@@ -45,7 +45,7 @@ const Menu = () => {
   const location = useLocation();
 
   // Memos
-  const menuMemo = React.useMemo(() =>appRoutes.map(item => ({label:item.label, path:item.path, Icon: item.icon})),[]) // prettier-ignore
+  const menuMemo = React.useMemo(() =>appRoutes.filter(item => item.showInMenu).map(item => ({label:item.label, path:item.path, Icon: item.icon})),[]) // prettier-ignore
 
   // Functions
   const onClick = (path: string) => () => navigate(path);
