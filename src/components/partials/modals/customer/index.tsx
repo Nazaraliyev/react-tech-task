@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './styles.module.css';
 import { CustomModal, Flex, FormItem } from '@/components/common/';
-import { RegisterOptions, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { TextField, Typography } from '@mui/material';
+import { customerFields } from '@/utils/constants/customer';
 
 interface Props {
   open: boolean;
@@ -11,16 +12,6 @@ interface Props {
   onSubmit: (data: any) => void;
 }
 
-interface ItemType {
-  title: string;
-  children: {
-    name: string;
-    label: string;
-    component: string;
-    isFull?: boolean;
-    rules?: RegisterOptions;
-  }[];
-}
 
 const CustomerModal = (props: Props) => {
   // Hooks
@@ -40,7 +31,7 @@ const CustomerModal = (props: Props) => {
       confirmButtonText="Create">
       <form id={formId} onSubmit={handleSubmit(props.onSubmit)}>
         <Flex gap={'xl'} direction="column">
-          {items.map((item) => (
+          {customerFields.map((item) => (
             <Block title={item.title}>
               {item.children.map((child) => (
                 <FormItem
@@ -81,79 +72,9 @@ const Block = (props: { title: string; children: React.ReactNode }) => {
 
 const formId = 'customer-form';
 
-const items: ItemType[] = [
-  {
-    title: 'ID Card Information',
-    children: [
-      {
-        name: 'firstName',
-        label: 'First Name',
-        component: 'input',
-      },
-      {
-        name: 'lastName',
-        label: 'Last Name',
-        component: 'input',
-      },
-      {
-        name: 'fatherName',
-        label: ' Father’s Name',
-        component: 'input',
-      },
-      {
-        name: 'dateOfBirth',
-        label: 'Date of Birth',
-        component: 'date',
-      },
-      {
-        name: 'fin',
-        label: 'FIN Code',
-        component: 'input',
-      },
-      {
-        name: 'serial',
-        label: 'Serial Number',
-        component: 'input',
-      },
-    ],
-  },
-  {
-    title: 'Address',
-    children: [
-      {
-        name: 'registrationAddress',
-        label: 'Registration address',
-        component: 'input',
-        isFull: true,
-      },
-      {
-        name: 'actualAddress',
-        label: 'Actual address',
-        component: 'input',
-        isFull: true,
-      },
-    ],
-  },
-  {
-    title: 'Contact',
-    children: [
-      {
-        name: 'phone',
-        label: 'Phone number',
-        component: 'input',
-      },
-      {
-        name: 'email',
-        label: 'Email address',
-        component: 'input',
-      },
-    ],
-  },
-];
-
 const defaultValues = (() => {
   const value: { [key: string]: any } = {};
-  const allItems = items.flatMap((item) => item.children);
+  const allItems = customerFields.flatMap((item) => item.children);
   allItems.forEach((item) => { value[item.name] = '' }) // prettier-ignore
   return value;
 })();

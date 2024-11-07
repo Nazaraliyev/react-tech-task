@@ -13,7 +13,8 @@
       "reduxjs",
       "tsbuildinfo",
       "respublika",
-      "opps"
+      "opps",
+      "notistack"
     ],
     "ignorePaths": [
       "**/*.svg"

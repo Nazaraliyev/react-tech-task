@@ -10,4 +10,17 @@ export interface CustomerType {
   email: string;
   phone: string;
   isGuarantor: boolean;
+  job?: CustomerJobType;
+  credits: number[];
+  createBy: string;
+  createdAt: string;
+}
+
+export interface CustomerJobType {
+  jobTitle: string;
+  company: string;
+  region: string;
+  salary: number;
+  experienceYears: number;
+  experienceMonths: number;
 }

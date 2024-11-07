@@ -6,6 +6,7 @@ import { addCustomer } from '@/store/slices/customers';
 import { useDelay } from '@/utils/hooks';
 import { Typography } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
+import { useSnackbar } from 'notistack';
 import React from 'react';
 import { IoAdd } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,6 +45,7 @@ const Create = () => {
   // Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
   const { delaying, getDelay } = useDelay();
 
   // Functions
@@ -53,7 +55,7 @@ const Create = () => {
     getDelay(() => {
       dispatch(addCustomer(customer));
       setOpen(false);
-
+      enqueueSnackbar('Customer created successfully', { variant: 'success' });
       setTimeout(() => { navigate(`/customers/${data.fin}`, { replace: true }) }, 200); // prettier-ignore
     });
   };
