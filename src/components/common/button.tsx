@@ -8,7 +8,7 @@ const CustomButton = ({ children, loading, onClick, variant="contained", color =
     <Button {...{ ...props, color, variant, size, onClick, children }} />
   ) : (
     <Button {...{ ...props, variant, color, size }}>
-      <CircularProgress size={progressSize[size]} style={{ color: progressColor[color] }} />
+      <CircularProgress size={progressSize[size]} style={{ color: progressColor[variant] }} />
     </Button>
   );
 };
@@ -19,6 +19,6 @@ const progressSize: Record<string, number> = {
   small: 22.75,
 };
 const progressColor: Record<string, string> = {
-  primary: '#fff',
-  secondary: '#fff',
+  contained: '#fff',
+  outlined: '#475ed0',
 };

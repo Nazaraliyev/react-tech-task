@@ -12,7 +12,8 @@
     "words": [
       "reduxjs",
       "tsbuildinfo",
-      "respublika"
+      "respublika",
+      "opps"
     ],
     "ignorePaths": [
       "**/*.svg"

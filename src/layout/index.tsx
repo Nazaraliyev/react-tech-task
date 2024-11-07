@@ -1,8 +1,16 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import { Flex } from "@/components/common";
+import SideBar from "./components/sidebar";
+import Content from "./components/content";
 
 const Layout = () => {
-  return <Outlet />;
+  return (
+    <Flex isFullHeight>
+      <SideBar />
+      <Content />
+    </Flex>
+  );
 };
 
 export default Layout;
+
+
