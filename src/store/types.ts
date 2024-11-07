@@ -1,5 +1,5 @@
 export interface UserSliceType {
-  fullName: undefined;
+  fullName: string | undefined;
 }
 
 export interface CustomerSliceType {}

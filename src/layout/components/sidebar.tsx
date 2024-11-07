@@ -43,7 +43,6 @@ const Menu = () => {
   // Hooks
   const navigate = useNavigate();
   const location = useLocation();
-  console.log('route :>> ', route);
 
   // Memos
   const menuMemo = React.useMemo(() =>appRoutes.map(item => ({label:item.label, path:item.path, Icon: item.icon})),[]) // prettier-ignore
@@ -54,7 +53,7 @@ const Menu = () => {
     <section>
       <List className={styles.side_bar_menu}>
         {menuMemo.map(({ Icon, ...item }) => (
-          <ListItemButton onClick={onClick(item.path!)} selected={item.path === location.pathname}>
+          <ListItemButton onClick={onClick(item.path!)} key={item.path} selected={item.path === location.pathname}>
             <ListItemIcon className={styles.side_bar_menu_item}>
               <Icon size={20} />
             </ListItemIcon>
