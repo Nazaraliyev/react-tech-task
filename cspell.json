@@ -1,0 +1,21 @@
+{
+    "languageSettings": [
+      {
+        "languageId": "javascript",
+        "caseSensitive": false
+      },
+      {
+        "languageId": "markdown",
+        "caseSensitive": true
+      }
+    ],
+    "words": [
+      "reduxjs",
+      "tsbuildinfo",
+      "respublika"
+    ],
+    "ignorePaths": [
+      "**/*.svg"
+    ]
+  }
+  

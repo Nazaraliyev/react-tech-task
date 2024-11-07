@@ -1,0 +1,10 @@
+.error{
+    height: 10px;
+    line-height: 2 !important;
+    overflow: hidden;
+    font-size: var(--font-size-s) !important;
+    transition: .3s;
+}
+.error--show{
+    line-height: 1 !important;
+}

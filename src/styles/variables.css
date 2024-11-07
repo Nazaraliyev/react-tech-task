@@ -1,0 +1,17 @@
+:root {
+  --primary-color: #475ed0;
+  --secondary-color: blue;
+  --text-primary-color: #444;
+  --text-secondary-color: #999;
+
+  --border-radius-s: 4px;
+  --border-radius-m: 4px;
+  --border-radius-l: 4px;
+
+  --font-size-xs: 10px;
+  --font-size-s: 12px;
+  --font-size-m: 14px;
+  --font-size-l: 16px;
+  --font-size-xl: 20px;
+  --font-size-xxl: 24px;
+}
