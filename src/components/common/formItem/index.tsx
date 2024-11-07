@@ -11,6 +11,7 @@ interface Props {
   control: any;
   rules?: RegisterOptions;
   onChange?: (name: string, value: any) => void;
+  className?:string
 }
 
 const FormItem = (props: Props) => {
@@ -21,7 +22,7 @@ const FormItem = (props: Props) => {
       rules={props.rules}
       render={({ field, fieldState }) => {
         return (
-          <Flex direction="column" gap={'s'}>
+          <Flex direction="column" gap={'s'} className={props.className}>
             {React.Children.map(props.children, (child: any) => {
               return React.cloneElement(child, {
                 value: field.value,

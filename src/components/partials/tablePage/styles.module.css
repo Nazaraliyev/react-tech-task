@@ -1,0 +1,14 @@
+.container {
+  /* background-color: #fff;
+  border-radius: ; */
+}
+.header {
+  padding: 12px;
+}
+
+.header_search {
+  width: 250px;
+}
+.empty {
+  height: 400px;
+}

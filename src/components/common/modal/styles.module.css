@@ -1,0 +1,21 @@
+.container {
+  padding-top: 100px;
+}
+
+.content {
+  height: fit-content !important;
+  background-color: #fff;
+  border-radius: var(--border-radius-m);
+
+  & > div {
+    padding: 20px;
+  }
+}
+
+
+.close_button{
+    min-width: 20px !important;
+}
+.cancel_button{
+    color: var(--text-secondary-color) !important;
+}
