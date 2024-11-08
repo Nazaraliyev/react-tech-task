@@ -7,20 +7,16 @@ import React from 'react';
 
 const CreditExperience = () => {
   // Store
-  const { data, onNext } = useCreditDataContext();
+  const { data, onChange } = useCreditDataContext();
 
   // Hooks
   const { control, reset, handleSubmit } = useForm({ defaultValues: generateExperienceValue(data.experience) });
 
   // Effects
-  React.useEffect(() => {
-    reset(generateExperienceValue(data.experience));
-  }, [data.experience]);
+  React.useEffect(() => { reset(generateExperienceValue(data.experience)) }, [data.experience]);
 
   // Functions
-  const onSubmit = (event: any) => {
-    onNext();
-  };
+  const onSubmit = (event: any) => onChange("experience", event, true);
 
   return (
     <form id="form" onSubmit={handleSubmit(onSubmit)}>

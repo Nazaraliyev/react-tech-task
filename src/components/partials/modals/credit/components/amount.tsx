@@ -15,7 +15,7 @@ const CreditAmount = () => {
   React.useEffect(() => { reset(generateAmountValue(data?.amount)) }, [data?.amount]);
 
   // Functions
-  const onSubmit = (event: any) => onChange('amount', event);
+  const onSubmit = (event: any) => onChange('amount', event, true);
 
   return (
     <form id="form" onSubmit={handleSubmit(onSubmit)}>

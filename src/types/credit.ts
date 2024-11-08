@@ -9,7 +9,7 @@ export interface CreditType {
   duration: number;
   interest: number;
   status: 'pending' | 'approved' | 'declined';
-  declineReason: string;
+  declineReason: string|null;
   statusUpdatedAt: string;
   createdAt: string;
   createdBy: string;

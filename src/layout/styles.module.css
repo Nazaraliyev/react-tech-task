@@ -32,7 +32,8 @@
   }
   & > footer {
     height: 50px;
-    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     & button {
       width: 100%;
     }
@@ -46,11 +47,11 @@
   padding: 5px 0px;
 }
 
-.side_bar_menu{
-  & >div{
+.side_bar_menu {
+  & > div {
     border-radius: var(--border-radius-m) !important;
   }
-  & .side_bar_menu_item{
+  & .side_bar_menu_item {
     min-width: 32px !important;
   }
 }
@@ -71,7 +72,6 @@
   & > section {
     flex: 1;
     padding: 20px;
+    overflow: auto;
   }
 }
-
-

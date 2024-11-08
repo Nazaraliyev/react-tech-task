@@ -1,3 +1,4 @@
+import { CreditType } from '@/types/credit';
 import { CustomerType } from '@/types/customer';
 
 export interface UserSliceType {
@@ -8,4 +9,6 @@ export interface CustomerSliceType {
   customers: CustomerType[];
 }
 
-export interface CreditSliceType {}
+export interface CreditSliceType {
+  data: CreditType[];
+}

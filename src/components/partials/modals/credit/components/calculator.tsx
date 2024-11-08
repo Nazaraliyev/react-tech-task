@@ -5,10 +5,17 @@ import { CreditTable } from '@/components/partials';
 
 const CreditCalculator = () => {
   // Store
-  const { data } = useCreditDataContext();
+  const { data, onChange } = useCreditDataContext();
 
   // Memos
-  const table = React.useMemo(() => (!!data.calendar.length ? data.calendar : generate(data.amount)), [data.amount, data.calendar]);
+  const table = React.useMemo(() => {
+    if(!!data.calendar.length) return data.calendar;
+    else {
+      const table = generate(data.amount);
+      onChange('calendar', table);
+      return table;
+    }
+  }, [data.amount, data.calendar]);
 
   return <CreditTable {...{ data: table, currency: data.amount.currency, interest: data.amount.interest, duration: data.amount.duration }} />;
 };

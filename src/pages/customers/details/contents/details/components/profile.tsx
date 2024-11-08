@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles.module.css';
+import styles from '../../../styles.module.css';
 import { Typography } from '@mui/material';
 import { MaleImg } from '@/assets/images';
 import { Flex, CustomButton, CustomModal } from '@/components/common';

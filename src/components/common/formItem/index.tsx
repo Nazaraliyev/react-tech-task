@@ -11,7 +11,7 @@ interface Props {
   control: any;
   rules?: RegisterOptions;
   onChange?: (name: string, value: any) => void;
-  className?:string
+  className?: string;
 }
 
 const FormItem = (props: Props) => {
@@ -29,6 +29,9 @@ const FormItem = (props: Props) => {
                 onChange: field.onChange,
                 onBlur: field.onBlur,
                 error: !!fieldState?.error,
+                InputLabelProps: {
+                  shrink: ![undefined,null, ''].includes(field.value) ,
+                },
               });
             })}
             <Error fieldState={fieldState} />

@@ -1,28 +1,35 @@
 import styles from '../styles.module.css';
 import cx from 'classnames';
 import { CustomButton, Flex } from '@/components/common';
-import { steps } from '../constants/steps';
+import { steps } from '../utils/constans';
 import { useCreditDataContext } from '../context/data';
+import useCreditCreator from '../utils/useCreator';
 
-const CreditFooter = () => {
+const CreditFooter = (props: { onClose: () => void }) => {
   // Store
-  const { step, onPrev, onNext } = useCreditDataContext();
+  const { step, data, onPrev, onNext, onChange } = useCreditDataContext();
 
   // Variables
   const isFinal = step === steps.length - 1;
 
+  // Hooks
+  const { create } = useCreditCreator();
+
   // Functions
-  const onClick = (type: 'prev' | 'next' | 'complete' | 'decline') => () => {
+  const onClick = (type?: 'next' | 'complete' | 'decline') => () => {
     switch (type) {
-      case "complete": return console.log("Complete") // prettier-ignore
-      case "decline": return console.log("Decline") // prettier-ignore
-      default: return console.log("No action") // prettier-ignore
+      case 'complete':  return create() // prettier-ignore
+      case 'decline': return data.status === 'pending' && onChange('status', 'declined') // prettier-ignore
+      default: {
+        if ([0, 1, 2].includes(step)) return;
+        else onNext();
+      }
     }
   };
   return (
     <Flex justify="space-between">
       {isFinal && (
-        <CustomButton onClick={onClick('decline')} color="error" className={styles.button}>
+        <CustomButton form={'form'} type={'submit'} onClick={onClick('decline')} color="error" className={styles.button}>
           Decline
         </CustomButton>
       )}
@@ -32,12 +39,16 @@ const CreditFooter = () => {
             Prev
           </CustomButton>
         )}
-        <CustomButton type="submit" form='form' className={styles.button}>
-          {isFinal ? 'Complete' : 'Next'}
-        </CustomButton>
+        {!(data.status === 'declined' && isFinal) && (
+          <CustomButton type="submit" form="form" onClick={onClick(isFinal ? 'complete' : 'next')} className={styles.button}>
+            {isFinal ? 'Complete' : 'Next'}
+          </CustomButton>
+        )}
       </Flex>
     </Flex>
   );
 };
 
 export default CreditFooter;
+
+const generateData = () => {};

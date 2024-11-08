@@ -17,6 +17,7 @@ export default CustomButton;
 
 const progressSize: Record<string, number> = {
   small: 22.75,
+  medium: 25,
 };
 const progressColor: Record<string, string> = {
   contained: '#fff',

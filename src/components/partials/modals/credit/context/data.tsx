@@ -1,32 +1,27 @@
-import { CustomerJobType, CustomerType } from '@/types/customer';
+import { CustomerType } from '@/types/customer';
 import React from 'react';
+import { CreditDataType } from '../types';
 
 // Types
-interface DataType {
-  experience: CustomerJobType | undefined;
-  amount: {
-    currency: string;
-    amount: number;
-    goal: string;
-    duration: number;
-    interest: number;
-  };
-  guarantors: string[];
-  calendar: {
-    month: string;
-    amount: number;
-    remaining: number;
-  }[];
-}
 interface CreditDataContextType {
   step: number;
-  data: DataType;
+  data: CreditDataType;
   onNext: () => void;
   onPrev: () => void;
-  onChange: (key: 'experience' | 'amount' | 'guarantors', value: any) => void;
+  onChange: (key: keyof typeof initialData, value: any, nextStep?: boolean) => void;
+  onClose: () => void;
+  loading: boolean;
+  setLoading: (event: boolean) => void;
 }
 
-const initialData: DataType = {
+interface Props {
+  children: React.ReactNode;
+  customer: CustomerType;
+  open: boolean;
+  onClose: () => void;
+}
+
+const initialData: CreditDataType = {
   experience: undefined,
   amount: {
     currency: 'usd',
@@ -37,35 +32,58 @@ const initialData: DataType = {
   },
   guarantors: [],
   calendar: [],
+  status: 'pending',
 };
 
 // Create new Context
 export const CreditDataContext = React.createContext<CreditDataContextType>({
   step: 0,
+  loading: false,
   data: initialData,
   onNext: () => {},
   onPrev: () => {},
   onChange: () => {},
+  onClose: () => {},
+  setLoading: () => {},
 });
 
-const CreditDataProvider = (props: { children: React.ReactNode; customer: CustomerType }) => {
+const CreditDataProvider = (props: Props) => {
   // States
   const [step, setStep] = React.useState(0);
   const [data, setData] = React.useState(initialData);
+  const [loading, setLoading] = React.useState(false);
 
   // Effects
   React.useEffect(() => { props.customer?.job && setData({ ...initialData, experience: props.customer.job })  }, [props.customer]); // prettier-ignore
+  React.useEffect(() => {
+    if (!props.open) {
+      setData({ ...initialData, experience: props.customer?.job });
+      setStep(0);
+    }
+  }, [props.open]);
+
+  // CallBacks
+  const onClose = React.useCallback(props.onClose, [props.onClose]);
 
   // Functions
-  const onNext = () => setStep(step + 1);
-  const onPrev = () => setStep(step - 1);
-
-  const onChange = (key: 'experience' | 'amount' | 'guarantors', value: any) => {
-    setData({ ...data, [key]: value });
-    onNext();
+  const onNext = () => {
+    setStep(step + 1);
+  };
+  const onPrev = () => {
+    if (data.status === 'declined') setData({ ...data, status: 'pending' });
+    else setStep(step - 1);
   };
 
-  return <CreditDataContext.Provider value={{ step, data, onChange, onNext, onPrev }}>{props.children}</CreditDataContext.Provider>;
+  const onChange = (key: keyof typeof data, value: any, nextStep: boolean = false) => {
+    setData({ ...data, [key]: value });
+    nextStep && onNext();
+  };
+
+  return (
+    <CreditDataContext.Provider value={{ step, loading, data, setLoading, onClose, onChange, onNext, onPrev }}>
+      {props.children}
+    </CreditDataContext.Provider>
+  );
 };
 
 export default CreditDataProvider;
