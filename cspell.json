@@ -1,23 +1,14 @@
 {
-    "languageSettings": [
-      {
-        "languageId": "javascript",
-        "caseSensitive": false
-      },
-      {
-        "languageId": "markdown",
-        "caseSensitive": true
-      }
-    ],
-    "words": [
-      "reduxjs",
-      "tsbuildinfo",
-      "respublika",
-      "opps",
-      "notistack"
-    ],
-    "ignorePaths": [
-      "**/*.svg"
-    ]
-  }
-  
+  "languageSettings": [
+    {
+      "languageId": "javascript",
+      "caseSensitive": false
+    },
+    {
+      "languageId": "markdown",
+      "caseSensitive": true
+    }
+  ],
+  "words": ["reduxjs", "tsbuildinfo", "respublika", "opps", "notistack", "predeploy"],
+  "ignorePaths": ["**/*.svg"]
+}
