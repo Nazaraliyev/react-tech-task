@@ -1,9 +1,8 @@
-import React from 'react'
+import { TablePage } from '@/components/partials';
+import React from 'react';
 
 const GuarantorPage = () => {
-  return (
-    <div>GuarantorPage</div>
-  )
-}
+  return <TablePage />;
+};
 
-export default GuarantorPage
+export default GuarantorPage;

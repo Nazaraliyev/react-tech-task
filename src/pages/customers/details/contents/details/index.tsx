@@ -13,7 +13,7 @@ const CustomerDetails = ({ data }: { data?: CustomerType }) => {
   const { controlExperience, controlInfo, onSubmit, loading } = useFormHandle(data);
 
   return (
-    <CustomerContainer title="Customer details">
+    <CustomerContainer title="Customer details" className={styles.container}>
       <Grid2 container columns={24} spacing={3}>
         <Grid2 size={6}>
           <CustomerProfile {...{ data }} />

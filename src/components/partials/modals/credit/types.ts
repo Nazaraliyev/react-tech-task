@@ -1,7 +1,8 @@
-import { CustomerJobType } from '@/types/customer';
+import { CustomerJobType, CustomerType } from '@/types/customer';
 
 export interface CreditDataType {
   experience: CustomerJobType | undefined;
+  customer: CustomerType | undefined;
   amount: {
     currency: string;
     amount: number;

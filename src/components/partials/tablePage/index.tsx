@@ -1,9 +1,8 @@
 import React, { ChangeEvent } from 'react';
 import styles from './styles.module.css';
-import { Divider, Paper, TextField } from '@mui/material';
-import { Flex } from '@/components/common';
+import { Divider, Paper, TextField, Typography } from '@mui/material';
+import { Flex, CustomTable } from '@/components/common';
 import Empty from '@/components/common/empty';
-import CustomTable from '@/components/common/table';
 import { GridColDef } from '@mui/x-data-grid';
 
 interface Props {
@@ -33,7 +32,7 @@ const Header = ({ searchPlaceHolder = 'Search...', ...props }: Partial<Props>) =
   const onSearch = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => props.onSearch?.(event.target.value);
 
   return (
-    <Flex justify="flex-end" className={styles.header} gap={'l'}>
+    <Flex justify="flex-end" gap={'l'} className={styles.header}>
       <TextField size="small" label={searchPlaceHolder} onChange={onSearch} className={styles.header_search} />
       {props.extras}
     </Flex>

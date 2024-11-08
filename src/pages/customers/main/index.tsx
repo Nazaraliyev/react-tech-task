@@ -80,6 +80,6 @@ const generateColumns = (onClick: (fin: string) => any): GridColDef[] => [
     width: 140,
     align: 'center',
     headerAlign: 'center',
-    renderCell: (params) => <CustomButton onClick={() => onClick(params.row.fin)}>View</CustomButton>,
+    renderCell: (params) => <CustomButton size="small" variant='outlined' onClick={() => onClick(params.row.fin)}>View</CustomButton>,
   },
 ];

@@ -7,6 +7,10 @@
   margin-bottom: 20px !important;
 }
 
+.divider_credit{
+  margin-bottom: 0px !important;
+  margin-top: 0px  !important
+}
 /* ====== PROFILE ===== */
 
 .profile_image {
@@ -45,17 +49,4 @@
 }
 
 .experience {
-}
-
-.status {
-  width: 12px;
-  height: 12px;
-  border-radius: 10px;
-}
-
-.status--declined {
-  background: var(--danger-color);
-}
-.status--approved {
-  background: var(--success-color);
 }

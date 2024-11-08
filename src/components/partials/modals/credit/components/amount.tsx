@@ -22,11 +22,11 @@ const CreditAmount = () => {
       <Grid2 container spacing={2}>
         {creditFields.map((item) => (
           <Grid2 size={6} key={item.name}>
-            <FormItem key={item.name} control={control} name={item.name}>
+            <FormItem key={item.name} control={control} name={item.name} rules={{ required: 'This field is required' }}>
               {item.component === 'input' ? (
                 <TextField size="small" label={item.label} />
               ) : item.component === 'number' ? (
-                <TextField size="small" label={item.label} type='number' InputProps={{ inputProps: { min: 0 } }} />
+                <TextField size="small" label={item.label} type='number'  InputProps={{ inputProps: { min: 0 } }} />
               ) : (
                 <Select size="small" label={item.label}>
                   {item.options?.map((option) => (

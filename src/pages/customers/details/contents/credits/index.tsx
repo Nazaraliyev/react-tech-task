@@ -24,7 +24,11 @@ const CustomerCredits = (props: { data?: CustomerType }) => {
   }, [data, props.data]);
 
   return (
-    <CustomerContainer title="Customer Credits" extras={<Extras customer={props.data!} />}>
+    <CustomerContainer
+      title="Customer Credits"
+      extras={<Extras customer={props.data!} />}
+      headerClassName={styles.container}
+      dividerClassName={styles.divider_credit}>
       {creditsMemo.length ? <CustomTable data={creditsMemo} columns={columns} /> : <Empty />}
     </CustomerContainer>
   );
@@ -55,7 +59,7 @@ const columns: GridColDef[] = [
     renderCell: (params) => {
       return (
         <Flex center isFullHeight>
-          <div className={cx(styles.status, styles[`status--${params.row.status}`])} />
+          <div className={cx('credit_status', `credit_status--${params.row.status}`)} />
         </Flex>
       );
     },

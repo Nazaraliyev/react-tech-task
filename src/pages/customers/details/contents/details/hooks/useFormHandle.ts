@@ -18,8 +18,6 @@ const useFormHandle = (data: any) => {
   React.useEffect(() => {
     if (data) {
       resetInfo(generateInfoValues(data));
-      console.log('generateExperienceValue(data?.job) :>> ', generateExperienceValue(data?.job));
-      console.log('generateInfoValues(data) :>> ', generateInfoValues(data));
       resetExperience(generateExperienceValue(data?.job));
     }
   }, [data]);

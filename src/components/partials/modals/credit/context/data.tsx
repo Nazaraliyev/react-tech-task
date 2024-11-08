@@ -23,6 +23,7 @@ interface Props {
 
 const initialData: CreditDataType = {
   experience: undefined,
+  customer: undefined,
   amount: {
     currency: 'usd',
     amount: 0,
@@ -54,10 +55,10 @@ const CreditDataProvider = (props: Props) => {
   const [loading, setLoading] = React.useState(false);
 
   // Effects
-  React.useEffect(() => { props.customer?.job && setData({ ...initialData, experience: props.customer.job })  }, [props.customer]); // prettier-ignore
+  React.useEffect(() => { props.customer?.job && setData({ ...initialData, customer: props.customer, experience: props.customer.job })  }, [props.customer]); // prettier-ignore
   React.useEffect(() => {
     if (!props.open) {
-      setData({ ...initialData, experience: props.customer?.job });
+      setData({ ...initialData, customer: props.customer, experience: props.customer?.job });
       setStep(0);
     }
   }, [props.open]);

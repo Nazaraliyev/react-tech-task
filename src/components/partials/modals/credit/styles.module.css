@@ -3,7 +3,8 @@
 }
 
 .body {
-  /* height: 550px; */
+  max-height: 500px;
+  overflow: auto;
 }
 .button_cancel {
   color: var(--text-secondary-color) !important;
@@ -21,4 +22,16 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.confirmation_block {
+  padding: 10px;
+}
+.confirmation_block_divider {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.confirmation_row {
+  width: 40% !important
 }

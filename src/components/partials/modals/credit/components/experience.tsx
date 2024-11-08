@@ -23,7 +23,7 @@ const CreditExperience = () => {
       <Grid2 container spacing={2}>
         {customerJobFields.map((item) => (
           <Grid2 size={6} key={item.name}>
-            <FormItem key={item.name} control={control} name={item.name}>
+            <FormItem key={item.name} control={control} name={item.name} rules={{ required: 'This field is required' }}>
               {item.component === 'input' ? (
                 <TextField size="small" label={item.label} />
               ) : (

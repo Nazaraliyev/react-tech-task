@@ -30,7 +30,7 @@ const FormItem = (props: Props) => {
                 onBlur: field.onBlur,
                 error: !!fieldState?.error,
                 InputLabelProps: {
-                  shrink: ![undefined,null, ''].includes(field.value) ,
+                  shrink: ![undefined,null, ''].includes(field.value) || child?.props?.type === "date" ,
                 },
               });
             })}

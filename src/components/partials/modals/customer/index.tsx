@@ -45,7 +45,7 @@ const CustomerModal = (props: Props) => {
                   {child.component === 'input' ? (
                     <TextField {...{ label: child.label, size: 'small' }} />
                   ) : (
-                    <TextField {...{ InputLabelProps: { shrink: true }, label: child.label, size: 'small', type: 'date' }} />
+                    <TextField {...{ label: child.label, size: 'small', type: 'date' }} />
                   )}
                 </FormItem>
               ))}
