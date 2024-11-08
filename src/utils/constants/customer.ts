@@ -100,16 +100,16 @@ export const customerJobFields = [
   {
     name: 'salary',
     label: 'Salary',
-    component: 'input',
+    component: 'number',
   },
   {
     name: 'experienceYears',
     label: 'Years of experience',
-    component: 'input',
+    component: 'number',
   },
   {
     name: 'experienceMonths',
     label: 'Months of experience',
-    component: 'input',
+    component: 'number',
   }
 ];

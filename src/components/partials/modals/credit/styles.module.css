@@ -1,0 +1,24 @@
+.button {
+  width: 100px;
+}
+
+.body {
+  /* height: 550px; */
+}
+.button_cancel {
+  color: var(--text-secondary-color) !important;
+}
+
+.select {
+  flex: 1;
+}
+.add_button {
+  width: 100px;
+}
+
+.customer_name {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

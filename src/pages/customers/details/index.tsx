@@ -11,6 +11,7 @@ import { CustomButton, Flex } from '@/components/common';
 import { customerFields, customerJobFields } from '@/utils/constants/customer';
 import CustomerBlock from './components/block';
 import useFormHandle from './hooks/useFormHandle';
+import { CreditModal } from '@/components/partials';
 
 const CustomerDetailsPage = () => {
   // Store
@@ -28,7 +29,7 @@ const CustomerDetailsPage = () => {
     const customer = customers.find((item) => item.fin === params.id);
     if (!customer) navigate(pages.customers);
     else setData(customer);
-  }, []);
+  }, [customers]);
 
   return (
     <Paper variant="outlined" className={styles.container}>
@@ -42,11 +43,20 @@ const CustomerDetailsPage = () => {
 export default CustomerDetailsPage;
 
 const Header = (props: { data?: CustomerType }) => {
+  // States
+  const [open, setOpen] = React.useState(false);
+
+  // Functions
+  const toggleModal = (type:"open"|"close") => () => setOpen(type === "open");
+
   return (
-    <Flex justify="space-between" align="center">
-      <Typography> Customer details</Typography>
-      <CustomButton>New Credit</CustomButton>
-    </Flex>
+    <>
+      <Flex justify="space-between" align="center">
+        <Typography> Customer details</Typography>
+        <CustomButton onClick={toggleModal("open")}>New Credit</CustomButton>
+      </Flex>
+      <CreditModal {...{ open, onClose: toggleModal("close"), customer: props.data! }} />
+    </>
   );
 };
 
@@ -85,4 +95,3 @@ const Content = (props: { data?: CustomerType }) => {
     </Grid2>
   );
 };
-

@@ -16,7 +16,11 @@ const CustomerBlock = (props: Props) => {
         <Flex wrap gap={'m'}>
           {props.fields.map((item) => (
             <FormItem key={item.name} control={props.control} name={item.name} className={styles.info_field}>
-              <TextField size="small" label={item.label} />
+              {item.component === 'input' ? (
+                <TextField size="small" label={item.label} />
+              ) : (
+                <TextField size="small" label={item.label} type="number" InputProps={{ inputProps: { min: 0 } }} />
+              )}
             </FormItem>
           ))}
         </Flex>

@@ -19,6 +19,7 @@ const useFormHandle = (data: any) => {
     if (data) {
       resetInfo(generateInfoValues(data));
       resetExperience(generateExperienceValue(data?.job));
+    console.log('generateExperienceValue(data?.job) :>> ', generateExperienceValue(data?.job));
     }
   }, [data]);
 

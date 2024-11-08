@@ -6,6 +6,7 @@ export interface CreditType {
   currency: string;
   amount: number;
   goal: string;
+  duration: number;
   interest: number;
   status: 'pending' | 'approved' | 'declined';
   declineReason: string;
