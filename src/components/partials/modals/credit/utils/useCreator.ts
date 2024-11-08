@@ -20,7 +20,7 @@ const useCreditCreator = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const create = (reason: string | null = null) => {
-    const credit = createCredit({ ...data, reason, customer: id!, creator: fullName! });
+    const credit = createCredit({ ...data, reason, creator: fullName! });
     const { experience } = data || {};
 
     dispatch(addCredit(credit));
@@ -35,8 +35,8 @@ const useCreditCreator = () => {
 
 export default useCreditCreator;
 
-const createCredit = (data: CreditDataType & { reason: string | null; customer: string; creator: string }): CreditType => ({
-  customer: data.customer,
+const createCredit = (data: CreditDataType & { reason: string | null; creator: string }): CreditType => ({
+  customer: data.customer?.fin!,
   guarantors: data.guarantors,
   currency: data.amount.currency,
   amount: data.amount.amount,

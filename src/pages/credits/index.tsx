@@ -98,7 +98,7 @@ const columns: GridColDef[] = [
     headerAlign: 'center',
     align: 'center',
     width: 140,
-    renderCell: (params) => (
+    renderCell: () => (
       <CustomButton size="small" variant="outlined">
         View
       </CustomButton>

@@ -1,11 +1,11 @@
 import styles from '../styles.module.css';
 import cx from 'classnames';
 import { CustomButton, Flex } from '@/components/common';
-import { steps } from '../utils/constans';
+import { steps } from '../utils/constants';
 import { useCreditDataContext } from '../context/data';
 import useCreditCreator from '../utils/useCreator';
 
-const CreditFooter = (props: { onClose: () => void }) => {
+const CreditFooter = () => {
   // Store
   const { step, data, onPrev, onNext, onChange } = useCreditDataContext();
 
@@ -50,5 +50,3 @@ const CreditFooter = (props: { onClose: () => void }) => {
 };
 
 export default CreditFooter;
-
-const generateData = () => {};

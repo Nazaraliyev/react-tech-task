@@ -4,8 +4,8 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base:"/react-tech-task/",
   plugins: [react()],
-  base:"/react-tech-task",
   resolve: {
     alias: {
       "@/": `${path.resolve(__dirname, "src")}/`,

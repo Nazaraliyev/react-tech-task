@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles.module.css';
 import cx from 'classnames';
-import { useLocation, useNavigate, useRoutes } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { LogoImg } from '@/assets/images';
 import { useDispatch } from 'react-redux';
 import { resetUser } from '@/store/slices/user';
@@ -17,9 +17,6 @@ import { CustomButton } from '@/components/common';
 import { ListItemButton, Typography } from '@mui/material';
 
 const SideBar = () => {
-  // States
-  const [open, setOpen] = React.useState(true);
-
   return (
     <aside className={cx(styles.side_bar)}>
       <Header />
@@ -55,7 +52,9 @@ const Menu = () => {
         {menuMemo.map(({ Icon, ...item }) => (
           <ListItemButton onClick={onClick(item.path!)} key={item.path} selected={item.path === location.pathname}>
             <ListItemIcon className={styles.side_bar_menu_item}>
-              <Icon size={20} />
+              {
+                Icon && <Icon size={20} />
+              }
             </ListItemIcon>
             <ListItemText>
               <Typography fontSize={14}>{item.label}</Typography>

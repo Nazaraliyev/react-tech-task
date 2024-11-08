@@ -5,7 +5,7 @@ import { CustomModal, Flex } from '@/components/common';
 import { CustomerType } from '@/types/customer';
 import { Step, StepLabel, Stepper } from '@mui/material';
 import CreditFooter from './components/footer';
-import { steps } from './utils/constans';
+import { steps } from './utils/constants';
 import CreditDecline from './components/decline';
 
 interface Props {
@@ -38,7 +38,7 @@ const CreditModal = (props: Props) => {
       title="Create Credit"
       onClose={props.onClose}
       bodyClassName={styles.body}
-      footer={<CreditFooter onClose={props.onClose} />}>
+      footer={<CreditFooter />}>
       <Flex direction="column" gap={'xxxl'}>
         <Stepper nonLinear activeStep={1}>
           {stepLabels.map((label, index) => (

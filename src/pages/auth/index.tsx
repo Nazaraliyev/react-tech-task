@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '@/store/slices/user';
 import useDelay from '@/utils/hooks/useDelay';
 import { useNavigate } from 'react-router-dom';
-import pages, { route } from '@/routes/constants/pages';
+import { route } from '@/routes/constants/pages';
 
 const AuthPage = () => {
   return (
@@ -56,7 +56,7 @@ const Form = () => {
     getDelay(() => {
       Cookies.set(cookieKeys.token, data?.fullName);
       dispatch(setUser(data?.fullName));
-      navigate(pages.customers, { replace: true });
+      navigate(route.app, { replace: true });
     });
   };
 

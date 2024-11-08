@@ -4,7 +4,6 @@ import pages from '@/routes/constants/pages';
 import { RootState } from '@/store';
 import { addCustomer } from '@/store/slices/customers';
 import { useDelay } from '@/utils/hooks';
-import { Typography } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import { useSnackbar } from 'notistack';
 import React from 'react';

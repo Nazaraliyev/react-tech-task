@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import styles from './styles.module.css';
-import { Divider, Paper, TextField, Typography } from '@mui/material';
+import { Divider, Paper, TextField } from '@mui/material';
 import { Flex, CustomTable } from '@/components/common';
 import Empty from '@/components/common/empty';
 import { GridColDef } from '@mui/x-data-grid';

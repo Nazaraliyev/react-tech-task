@@ -164,6 +164,6 @@ const createExperienceData = (data?: CustomerJobType) => [
   },
   {
     label: 'Experience',
-    value: data?.experienceYears ? `${data?.experienceYears} years ` : '' + data.experienceMonths ? `${data.experienceMonths} months` : '',
+    value: data?.experienceYears ? `${data?.experienceYears} years ` : '' + data?.experienceMonths ? `${data?.experienceMonths} months` : '',
   },
 ];
